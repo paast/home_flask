@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block head %}
+	<script>
+		var WIDTH = 10;
+		var HEIGHT = 10;
+
+		function test() {
+			var enter = document.getElementById("entrance");
+			enter.innerHTML = "";
+
+			var grid = document.createElement("div");
+			grid.classList.add("grid");
+
+			for (y = 0; y < HEIGHT; y++) {
+				var row = document.createElement("div");
+				row.classList.add("row");
+				for (x = 0; x < WIDTH; x++) {
+					var id = x + "-" + y
+					var column = document.createElement("div");
+					column.classList.add("column");
+					column.id = id;
+					column.setAttribute("onclick", "cc(\"" + id + "\")");
+					row.appendChild(column);
+				}
+				grid.appendChild(row);
+			}
+
+			enter.appendChild(grid);
+
+		}
+
+
+		function cc(id) {
+			console.log(id);
+			document.getElementById(id).style.backgroundColor = "rgb(" + randColor() + "," + randColor() + "," + randColor() + ")";
+		}
+
+		function randColor() {
+			return Math.floor(Math.random() * 255)
+		}
+	</script>
+	<style>
+		.column {
+			display: inline-block;
+			height: 50px;
+			width: 50px;
+			background-color: #000;
+			margin: 3px;
+			color: #0F0;
+		}
+
+		.row {
+		}
+
+		.grid {
+			background: #FFF;
+			line-height: 10px;
+			margin: 20px;
+			display: inline-block;
+			padding:10px;
+			border-style: solid;
+			border-width: 2px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<div id='entrance'></div>
+	<button style="font-family:consolas" type="button" onclick="test()">test</button>
+{% endblock %}

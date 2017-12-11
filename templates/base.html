@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{title}}</title>
+		{% block head %}{% endblock %}
+	</head>
+
+	<body style="font-family:consolas;">
+		<header>
+			<a href="/">home</a>
+			<a href="/resume">resume</a>
+			<a href="/random">???</a>
+		</header>
+		<div style="width:800px;margin:0px auto">
+		{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>
