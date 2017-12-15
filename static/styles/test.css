@@ -1,0 +1,55 @@
+body {
+	background: #999;
+	min-with: 600px;
+	font-family: consolas;
+}
+
+header {
+	background: #333;
+	width: 100%;
+	color: #000;
+	height: 40px;
+	border-bottom: 3px double #000;
+	font-family: courier;
+}
+
+.nav-bar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	display: inline;
+}
+
+.nav-bar li {
+	float: left;
+}
+
+
+.nav-bar a {
+	display: block;
+	color: #000;
+	padding: 8px 16px;
+	text-decoration: none;
+	background: #444;
+	text-align: center;
+}
+
+.nav-bar a:hover {
+	background: #666;
+}
+
+.error {
+	color: #DF1E3E;
+	display: inline;
+}
+
+#content {
+	width: 666px;
+	margin: auto;
+}
+
+hr {
+	border: none;
+	border-top: 3px double #000;
+}

@@ -1,0 +1,28 @@
+{% extends "nodal-in-base.html" %}
+
+{% block mid %}
+	<form id="new-node" method="post">
+		*Title:
+		<br>
+		<input type="text" name="title" value="{{ save_title if save_title is not none }}">
+		<br>
+		{% if title_error %}<p class="error" >{{title_error}}</p>{% endif %}
+		<br>
+		Content:
+		<br>
+		<textarea name="content">{{save_content}}</textarea>
+		<br><br><br>
+		*Node to connect to:
+		<br>
+		<input type="text" name="connect" value="{{ save_conn if save_conn is not none }}">
+		<br>
+		{% if conn_error %}<p class="error" >{{conn_error}}</p>{% endif %}
+		<br>
+		<br>
+		<input type="submit" value="submit">
+	</form>
+{% endblock %}
+
+{% block right %}
+
+{% endblock %}

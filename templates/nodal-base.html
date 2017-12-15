@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+<!-- header -->
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nodal/styles/nodal.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='nodal/favicon.ico') }}">
+{% endblock %}
+
+<!-- head -->
+{% block header %}
+	<div>
+		<img src="{{ url_for('static', filename='nodal/nodal_32.png') }}" id="nav-icon">
+	</div>
+	<div>
+		[{{title}}]
+	</div>
+	<a href="/"><div>
+		&lt;exit&gt;
+	</div></a>
+{% endblock %}
+
+<!-- content -->
+{% block content_wrapper %}
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "nodal-out-base.html" %}
+{% block out_ui %}
+
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<div class="error">
+		<ul>
+			{% for message in messages %}
+				<li>&gt; {{message}}</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% endwith %}
+
+	<form class="login-form" method="post">
+		username:
+		<br>
+		<input type="text" name="username" value="{{username}}">
+		<br>
+		{% if name_err %}<p class="error" >{{name_err}}</p>{% endif %}
+		<br>
+		password:
+		<br>
+		<input type="password" name="password">
+		<br>
+		{% if pwd_err %}<p class="error">{{pwd_err}}</p>{% endif %}
+		<br>
+		<br>
+		<input type="submit" value="submit">
+	</form>
+
+	don't have an account? --->
+	<a class="signup-link" href='/nodal/signup'>sign up</a>
+
+{% endblock %}

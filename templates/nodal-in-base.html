@@ -1,0 +1,43 @@
+{% extends "nodal-base.html" %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nodal/styles/nodal.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nodal/styles/nodal-in.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='nodal/favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+	
+	<!-- left-container -->
+	<div id="left-c">
+		<span class="nav-title">NAVIGATION</span>
+		<ul class="nav-list">
+			<hr>
+			<a href="/nodal"><li>Home</li></a>
+			<hr>
+			<a href="/nodal/node/root"><li>Root</li></a>
+			<hr>
+			<a href="/nodal/node/new"><li>Create Node</li></a>
+			<hr>
+			<a href="/nodal/link/new"><li>Create Link</li></a>
+			<hr>
+			<a href="/nodal/search"><li>Search</li></a>
+			<hr>
+			<a href="/nodal/logout"><li>Log Out</li></a>
+			<hr>
+		</ul>
+	</div>
+	
+	<!-- mid-container -->
+	<div id="mid-c">
+		{% block mid %}{% endblock %}
+	</div>
+	
+	<!-- right-container -->
+	<div id="right-c">
+	<span class="nav-title">DETAILS</span>
+	<ul class="nav-list">
+		{% block right %}{% endblock %}
+	</ul>
+	</div>
+
+{% endblock %}

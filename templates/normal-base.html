@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<!-- header -->
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/test.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	{% block javascript %}{% endblock %}
+{% endblock %}
+
+<!-- head -->
+{% block header %}
+	<ul class="nav-bar">
+		<li><a href="/">home</a></li>
+		<li><a href="/nodal">nodal</a></li>
+		<li><a href="/resume">resume</a></li>
+		<li><a href="/random">???</a></li>
+	</ul>
+{% endblock %}
+
+<!-- content -->
+{% block content_wrapper %}
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+{% endblock %}

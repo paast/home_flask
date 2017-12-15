@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/norm.css') }}">
 		<title>{{title}}</title>
 		{% block head %}{% endblock %}
 	</head>
 
-	<body style="font-family:consolas;">
+	<body>
 		<header>
-			<a href="/">home</a>
-			<a href="/resume">resume</a>
-			<a href="/random">???</a>
+			<div id="top-nav">
+			{% block header %}{% endblock %}
+			</div>
 		</header>
-		<div style="width:800px;margin:0px auto">
-		{% block content %}{% endblock %}
+		<div id="content-wrapper">
+		{% block content_wrapper %}{% endblock %}
 		</div>
 	</body>
 </html>

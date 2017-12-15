@@ -1,0 +1,146 @@
+
+
+#content {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	background: #292929;
+}
+
+#left-c {
+	position: relative;
+	background: #292929;
+	color: #3C9;
+	font-family: consolas;
+	width: 20%;
+	z-index: 1;
+	text-align: center;
+}
+
+#left-c a {
+	text-decoration: none;
+	color: #3C9;
+	font-family: consolas;
+}
+
+.nav-list li:hover, li:focus {
+	background: #333;
+}
+
+.nav-title {
+	display: block;
+	font-family: consolas;
+	letter-spacing: 5px;
+	font-size: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.nav-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+}
+
+.nav-list li {
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.nav-list hr {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #191919;
+	border-bottom: 1px solid #424242;
+
+}
+
+#mid-c {
+	padding: 20px;
+	font-family: consolas;
+	color: #888;
+	position: relative;
+	background: #333;
+	width: 60%;
+	box-shadow: 0px 0px 3px 3px #222;
+	z-index: 2;
+	overflow: auto;
+}
+
+#mid-c a {
+	color: #888;
+	text-decoration: none;
+}
+
+#mid-c a:hover, a:focus {
+	color: #99ffdd;
+}
+
+#new-node {
+	text-align: center;
+}
+
+#new-node input {
+	background: #262626;
+	color: #3C9;
+	border: 1px solid #222;
+	font-family: consolas;
+}
+
+#new-node textarea {
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	height: 600px;
+	resize: none;
+	background: #262626;
+	color: #3C9;
+	border: 1px solid #222;
+	font-family: consolas;
+	font-size: 14px;
+}
+
+#new-node input[type="text"]:hover, input[type="text"]:focus {
+	background: #222;
+	box-shadow: inset 0 0 2px #111;
+}
+
+#new-node textarea:hover, textarea:focus {
+	background: #222;
+	box-shadow: inset 0 0 2px #111;
+}
+
+#new-node input[type="submit"] {
+	color: #888;
+}
+
+#new-node input[type="submit"]:hover, input[type="submit"]:focus {
+	color: #9FD;
+	background: #222;
+}
+
+#right-c {
+	position: relative;
+	background: #292929;
+	color: #666;
+	font-family: consolas;
+	width: 20%;
+	z-index: 1;
+	text-align: center;
+}
+
+.inner-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.inner-list a {
+	text-decoration: none;
+	outline: none;
+	color: #666;
+}
+
+.inner-list a:hover, a:focus {
+	color: #9FD;
+}

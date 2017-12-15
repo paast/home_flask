@@ -1,0 +1,20 @@
+{% extends "nodal-base.html" %}
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nodal/styles/nodal.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nodal/styles/nodal-out.css') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='nodal/favicon.ico') }}">
+{% endblock %}
+
+{% block content %}
+
+	<!-- login/signup container -->
+	<div id="out-ui">
+		{% block out_ui %}{% endblock %}
+	</div>
+
+	<!-- misc. message container -->
+	<div id="misc-msg">
+		{% block misc_msg %}{% endblock %}
+	</div>
+
+{% endblock %}

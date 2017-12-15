@@ -1,0 +1,40 @@
+{% extends "nodal-in-base.html" %}
+
+{% block mid %}
+	{% if content %}
+		{{content}}
+	{% endif %}
+{% endblock %}
+
+{% block right %}
+		<hr>
+		<li>
+			Title:
+			<br>
+			{{name}}
+		</li>
+		<hr>
+		<li>
+			Date Created:
+			<br>
+			{{timestamp}}
+		</li>
+		<hr>
+		<li>
+			Links:
+			{% if links %}
+			<ul class="inner-list">
+				{% for link in links %}
+				<li>
+					<a href="/nodal/node?id={{link.ID}}">&gt; {{link.name}}</a>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</li>
+		<hr>
+		<li>Save</li>
+		<hr>
+		<li>Delete</li>
+		<hr>
+{% endblock %}
