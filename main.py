@@ -8,7 +8,7 @@ import string
 # ~~~~~~~~~~~~~~~
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://nodal_test:nodal_test@localhost:8889/nodal_test')
+app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+pymysql://nodal_test:nodal_test@localhost:3306/nodal_test')
 app.config['SECRET_KEY'] = 'a9sdbf53a85143iblhfg69omfeh465g4bk3hq2emp1nk'
 db = SQLAlchemy(app)
 
@@ -416,6 +416,14 @@ def nodalSearch():
 			results=results)
 
 	return render_template('nodal-search.html', title="nodal :: search")
+
+
+
+@app.route('/nodal/node/edit', methods=['GET', 'POST'])
+def editNode():
+
+
+	return render_template('edit-node.html', title="nodal :: edit/" + node.name)
 
 
 # ~~~~~~~~~~~~~~~
