@@ -1,7 +1,22 @@
 {% extends "nodal-in-base.html" %}
 
 {% block mid %}
-	new link test
+	<form id="new-node" method="post">
+		*node:
+		<br>
+		<input type="text" name="n1" value="{{ save_n1 if save_n1 is not none }}">
+		<br>
+		{% if n1_err %}<p class="error" >{{ n1_err }}</p>{% endif %}
+		<br>
+		*node:
+		<br>
+		<input type="text" name="n2" value="{{ save_n2 if save_n2 is not none }}">
+		<br>
+		{% if n2_err %}<p class="error" >{{ n2_err }}</p>{% endif %}
+		<br>
+		<br>
+		<input type="submit" value="submit">
+	</form>
 {% endblock %}
 
 {% block right %}

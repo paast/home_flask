@@ -90,6 +90,29 @@ def generate_salt(len):
 def get_user():
 	return (User.query.filter_by(ID=session['user']).first() if ('user' in session) else None)
 
+def check_node_by_name(name):
+	query = Node.query.filter_by(name=name).first()
+	if (not query):
+		return False
+	return True
+
+def remove_node(id):
+	return
+
+def create_link(user, n1, n2):
+	n1 = Node.query.filter_by(name=n1).first().ID
+	n2 = Node.query.filter_by(name=n2).first().ID
+	link = Link(user, n1, n2)
+	db.session.add(link)
+	db.session.commit()
+	return
+
+def remove_link(id):
+	# removes a link
+	# checks both nodes it's connected to
+	# if no other links, link to lost & found
+	return
+
 
 # ~~~~~~~~~~~~~~~
 
@@ -125,10 +148,14 @@ def session_check():
 				del session['user']
 				return redirect('nodal/login')
 
+
+
 @app.route("/nodal")
 def nodalHome():
 	user = get_user().username
 	return render_template('nodal.html', title='nodal :: ' + user, user=user)
+
+
 
 @app.route("/nodal/login", methods=['GET', 'POST'])
 def nodalLogin():
@@ -155,6 +182,8 @@ def nodalLogin():
 		return redirect('/nodal')
 
 	return render_template('nodal_login.html', title='nodal :: login')
+
+
 
 @app.route('/nodal/signup', methods=['GET', 'POST'])
 def nodalSignup():
@@ -199,8 +228,10 @@ def nodalSignup():
 			db.session.add(user)
 			db.session.commit()
 
-			node = Node(user.ID, "ROOT","I am root. [root is the root of all nodes - as such it may not be deleted or modified in any way]")
-			db.session.add(node)
+			root_node = Node(user.ID, "_ROOT","I am root. [root is the root of all nodes - as such it may not be deleted or modified in any way]")
+			lost_node = Node(user.ID, "_LOST", "Look here for lost nodes.") 
+			db.session.add(root_node)
+			db.session.add(lost_node)
 			db.session.commit()
 
 			session['user'] = user.ID
@@ -209,11 +240,15 @@ def nodalSignup():
 
 	return render_template('nodal_signup.html', title='nodal :: signup')
 
+
+
 @app.route('/nodal/logout')
 def logout():
 	if 'user' in session:
 		del session['user']
 	return redirect('/nodal/login')
+
+
 
 @app.route('/nodal/node')
 def viewNode():
@@ -243,6 +278,7 @@ def viewNode():
 
 		return render_template('view-node.html',
 			title="nodal :: node/" + node.name,
+			ID=node.ID,
 			name=node.name,
 			content=node.content,
 			timestamp=node.timestamp,
@@ -250,6 +286,8 @@ def viewNode():
 
 	return render_template('view-node.html',
 		title="nodal :: node :: N/A")
+
+
 
 @app.route('/nodal/node/new', methods=['GET', 'POST'])
 def newNode():
@@ -304,29 +342,78 @@ def newNode():
 
 	return render_template('new-node.html', title="nodal :: node/new")
 
+
+
 @app.route('/nodal/node/root')
 def rootNode():
-	root = Node.query.filter_by(UID=session['user'], name="ROOT").first()
+	root = Node.query.filter_by(UID=session['user'], name="_ROOT").first()
 	id = str(root.ID)
 	return redirect('/nodal/node?id=' + id)
+
+
+
+@app.route('/nodal/lost')
+def lostNode():
+	lost = Node.query.filter_by(UID=session['user'], name="_LOST").first()
+	id = str(lost.ID)
+	return redirect('/nodal/node?id=' + id)
+
+
 
 @app.route('/nodal/link')
 def viewLink():
 	return render_template('view-link.html', title="nodal :: link/")
 
+
+
 @app.route('/nodal/link/new', methods=['GET', 'POST'])
 def newLink():
 
 	if (request.method == 'POST'):
-		pass
+		n1 = request.form['n1']
+		n2 = request.form['n2']
+
+		n1_err = None
+		n2_err = None
+
+		if (len(n1) == 0):
+			n1_err = "must give node"
+		elif (not check_node_by_name(n1)):
+			n1_err = "node non-existant"
+
+		if (len(n2) == 0):
+			n2_err = "must give node"
+		elif (not check_node_by_name(n2)):
+			n2_err = "node non-existant"
+
+		if (n1_err or n2_err):
+			return render_template('new-link.html',
+				title="nodal :: link/new",
+				n1_err=n1_err,
+				n2_err=n2_err)
+
+		create_link(session['user'], n1, n2)
+
+		return redirect('/nodal')
 
 	return render_template('new-link.html', title="nodal :: link/new")
+
+
 
 @app.route('/nodal/search', methods=['GET', 'POST'])
 def nodalSearch():
 
 	if (request.method == 'POST'):
-		pass
+
+		search_term = request.form['search_term']
+
+		results = (Node.query
+			.filter(Node.name.contains(search_term))
+			.filter_by(UID=session['user']).all())
+
+		return render_template('nodal-search.html',
+			title="nodal :: search",
+			results=results)
 
 	return render_template('nodal-search.html', title="nodal :: search")
 

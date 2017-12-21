@@ -1,7 +1,20 @@
 {% extends "nodal-in-base.html" %}
 
 {% block mid %}
-nodal search test
+	<form id="new-node" method="post">
+		<input type="text" name="search_term">
+		<input type="submit" value="search">
+	</form>
+
+	{% if results %}
+	<ul>
+		{% for item in results %}
+		<li style="list-style-type: none;"><a href="/nodal/node?id={{ item.ID }}">&gt; {{ item.name }}</a></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+
 {% endblock %}
 
 {% block right %}

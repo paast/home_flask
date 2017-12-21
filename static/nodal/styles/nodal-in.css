@@ -11,16 +11,19 @@
 	position: relative;
 	background: #292929;
 	color: #3C9;
-	font-family: consolas;
+	font-family: consolas, monospace;
 	width: 20%;
 	z-index: 1;
 	text-align: center;
+	box-shadow: inset -3px 4px 5px -2px #222;
+	font-weight: lighter;
 }
 
 #left-c a {
 	text-decoration: none;
 	color: #3C9;
-	font-family: consolas;
+	font-family: consolas, monospace;
+	outline: none;
 }
 
 .nav-list li:hover, li:focus {
@@ -29,7 +32,7 @@
 
 .nav-title {
 	display: block;
-	font-family: consolas;
+	font-family: consolas, monospace;
 	letter-spacing: 5px;
 	font-size: 20px;
 	padding-top: 20px;
@@ -57,12 +60,11 @@
 
 #mid-c {
 	padding: 20px;
-	font-family: consolas;
+	font-family: consolas, monospace;
 	color: #888;
 	position: relative;
 	background: #333;
 	width: 60%;
-	box-shadow: 0px 0px 3px 3px #222;
 	z-index: 2;
 	overflow: auto;
 }
@@ -84,7 +86,7 @@
 	background: #262626;
 	color: #3C9;
 	border: 1px solid #222;
-	font-family: consolas;
+	font-family: consolas, monospace;
 }
 
 #new-node textarea {
@@ -96,7 +98,7 @@
 	background: #262626;
 	color: #3C9;
 	border: 1px solid #222;
-	font-family: consolas;
+	font-family: consolas, monospace;
 	font-size: 14px;
 }
 
@@ -120,14 +122,26 @@
 }
 
 #right-c {
+	box-shadow: inset 3px 4px 5px -2px #222;
 	position: relative;
 	background: #292929;
 	color: #666;
-	font-family: consolas;
+	font-family: consolas, monospace;
 	width: 20%;
 	z-index: 1;
 	text-align: center;
 }
+
+#right-c a {
+	text-decoration: none;
+	outline: none;
+	color: #666;
+}
+
+#right-c a:hover, a:focus {
+	color: #9FD;
+}
+
 
 .inner-list {
 	list-style-type: none;
